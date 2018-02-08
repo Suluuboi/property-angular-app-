@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+   <ion-list>
+        <ion-card
+           class="property"
+           text-wrap
+           *ngFor="let property of properties | async">
+           <ion-item>
+              <div *ngIf="property.image">
+                 <img [src]="property.image">
+              </div>
+              <h2>ERF: {{property.erf }}</h2>
+              <small>{{ property.town }} ({{ property.location }})</small>
+              <p>{{ property.description }}</p>
+   
+   
+   
+              <section class="multiples">
+                 <h3>Type</h3>
+                 <ion-chip
+                    padding-left
+                    padding-right
+                    margin-right>{{ property.type }}
+                  </ion-chip>
+              </section>
+   
+           </ion-item>
+   
+   
+   
+        </ion-card>
+     </ion-list>
+
+  
+
+</ion-content>

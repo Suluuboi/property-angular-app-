@@ -1,0 +1,66 @@
+<ion-header>
+  
+    <ion-navbar>
+      <ion-title>Login</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-card *ngIf="!provider.loggedin">
+      <ion-item>
+          <ion-label floating>Email Address</ion-label>
+          <ion-input type="text" [(ngModel)] = "user.email"></ion-input>
+        </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)] = "user.password"></ion-input>
+      </ion-item>
+    
+      <button ion-button (click)="login('user')">Login</button>
+      <button ion-button color="light" (click)="register()">Register</button>
+    </ion-card>
+
+    <ion-card>
+      <button ion-button (click)="loginP('facebook')" *ngIf="!provider.loggedin">
+          <ion-icon name="logo-facebook"></ion-icon>
+          &nbsp;
+        FACEBOOK LOGIN</button>
+    </ion-card>
+
+    <ion-card>
+      <button ion-button (click)="loginP('google')" *ngIf="!provider.loggedin" >
+          <ion-icon name="logo-google"></ion-icon>
+          &nbsp;
+        GOOGLE LOGIN</button>
+    </ion-card>
+
+    <ion-card *ngIf="provider.loggedin">
+      <img src="{{provider.profilePicture}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{ provider.name }}
+          </ion-card-title>
+        <p>
+          {{provider.email}}
+        </p>
+        <button ion-button (click)="signOut()">LOGOUT</button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="provider.loggedin">
+      <ion-input [(ngModel)]="myInput" >
+        <ion-label floating>data</ion-label>
+      </ion-input>
+      <button ion-button (click)="saveToDB()">Save To DB</button>
+    </ion-card>
+
+    
+
+    
+
+    
+
+  </ion-content>
